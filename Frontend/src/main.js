@@ -1,5 +1,6 @@
-import { formador } from "../pages/formador/index.js"
+import carregarPagina from "./js/utils/PageLoad.js"
+
 
 $(function(){
-    $('#app').html(formador())
+    carregarPagina('formandos')
 })
