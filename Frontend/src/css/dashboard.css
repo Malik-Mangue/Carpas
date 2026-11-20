@@ -1,0 +1,375 @@
+/* =========================================================
+   dashboard.css — layout do painel (header + sidebar + conteúdo)
+   Complementa o Bootstrap 4 (public/libs/bootstrap).
+   ========================================================= */
+
+:root {
+    --topbar-h: 60px;
+    --sidebar-w: 260px;
+
+    --bg-page: #f4f6fb;
+    --bg-surface: #ffffff;
+    --border: #e6eaf2;
+    --text-strong: #111827;
+    --text-muted: #6b7280;
+    --brand: #1d4ed8;
+    --brand-soft: #eef2ff;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-strong);
+    padding-top: var(--topbar-h);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Ícones (sprite SVG) ---------- */
+
+.svg-sprite {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vertical-align: middle;
+    flex: 0 0 auto;
+}
+
+.icon-sm { width: 16px; height: 16px; }
+.icon-lg { width: 26px; height: 26px; }
+
+/* ---------- Topbar ---------- */
+
+.app-topbar {
+    height: var(--topbar-h);
+    background: #111827;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .25);
+    z-index: 1040;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.app-topbar .navbar-brand {
+    color: #fff;
+    font-size: 1.05rem;
+    letter-spacing: .02em;
+}
+
+.app-topbar .navbar-brand img {
+    border-radius: 6px;
+    background: #fff;
+    padding: 2px;
+}
+
+.app-topbar .navbar-text {
+    color: #9ca3af;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    font-size: .72rem;
+}
+
+.avatar-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1f2937;
+    color: #cbd5e1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-w);
+    overflow-y: auto;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    z-index: 1030;
+    transition: transform .25s ease;
+}
+
+.sidebar-user-panel {
+    padding: 1.25rem 1.25rem 1rem;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.sidebar-avatar {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto .6rem;
+    border-radius: 50%;
+    background: var(--brand-soft);
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-greeting {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+}
+
+.sidebar-username {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-strong);
+}
+
+.sidebar-role {
+    font-size: .78rem;
+    color: var(--text-muted);
+}
+
+.sidebar-heading {
+    padding: 1rem 1.25rem .35rem;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: #9aa4b8;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 .25rem;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .6rem 1.25rem;
+    color: #4b5563;
+    font-size: .9rem;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.sidebar-menu a:hover {
+    background: #f8fafc;
+    color: var(--text-strong);
+    text-decoration: none;
+}
+
+.sidebar-menu a.active {
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-weight: 600;
+    border-left-color: var(--brand);
+}
+
+.sidebar-menu a.disabled,
+.sidebar-menu a.disabled:hover {
+    color: #b6bdcb;
+    background: transparent;
+    cursor: not-allowed;
+}
+
+.sidebar-footer {
+    padding: 1rem 1.25rem 1.5rem;
+    font-size: .75rem;
+    color: #b6bdcb;
+    text-align: center;
+}
+
+.sidebar-backdrop {
+    position: fixed;
+    inset: var(--topbar-h) 0 0 0;
+    background: rgba(15, 23, 42, .45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, visibility .2s ease;
+    z-index: 1025;
+}
+
+.sidebar-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---------- Conteúdo principal ---------- */
+
+.main-content {
+    margin-left: var(--sidebar-w);
+    padding: 1.75rem 2rem 2rem;
+}
+
+.content-header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-strong);
+    margin-bottom: .25rem;
+}
+
+.content-header .breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.content-header .breadcrumb-item a {
+    color: var(--brand);
+}
+
+.content-header .breadcrumb-item.active {
+    color: var(--text-muted);
+}
+
+.section-title {
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #9aa4b8;
+    margin-bottom: .9rem;
+}
+
+/* ---------- Cartões de estatística ---------- */
+
+.stat-card {
+    --accent: #1d4ed8;
+    --accent-soft: #e0e7ff;
+
+    display: block;
+    height: 100%;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: .65rem;
+    background: var(--bg-surface);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.stat-card:hover,
+.stat-card:focus {
+    color: inherit;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, .10);
+}
+
+.stat-card .card-body {
+    padding: 1.15rem 1.25rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-strong);
+}
+
+.stat-label {
+    font-size: .82rem;
+    color: var(--text-muted);
+    margin-top: .2rem;
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: .6rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.stat-card .card-footer {
+    background: transparent;
+    border-top: 1px solid var(--border);
+    padding: .6rem 1.25rem;
+    font-size: .78rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-card:hover .card-footer {
+    color: var(--accent);
+}
+
+.stat-card .card-footer .icon {
+    transition: transform .15s ease;
+}
+
+.stat-card:hover .card-footer .icon {
+    transform: translateX(3px);
+}
+
+/* Variantes de cor */
+.stat-cyan   { --accent: #0891b2; --accent-soft: #cffafe; }
+.stat-green  { --accent: #059669; --accent-soft: #d1fae5; }
+.stat-orange { --accent: #ea580c; --accent-soft: #ffedd5; }
+.stat-red    { --accent: #dc2626; --accent-soft: #fee2e2; }
+
+/* ---------- Footer ---------- */
+
+.main-footer {
+    margin-left: var(--sidebar-w);
+    padding: 1rem 2rem;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: .8rem;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.show {
+        transform: none;
+        box-shadow: 0 0 30px rgba(15, 23, 42, .25);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1.25rem 1rem 1.5rem;
+    }
+
+    .main-footer {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .stat-number {
+        font-size: 1.65rem;
+    }
+}
