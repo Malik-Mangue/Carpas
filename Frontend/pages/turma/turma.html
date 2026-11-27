@@ -1,0 +1,230 @@
+    <main class="main-content">
+
+        <!-- Cabeçalho da página -->
+        <div class="content-header d-flex flex-wrap justify-content-between align-items-end mb-4">
+            <div>
+                <h1>Turmas</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html#dashboard">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Turmas</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mensagens -->
+        <div id="flash"></div>
+
+        <div class="card">
+            <div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+                <h2 class="h6 mb-0">Listagem de Turmas</h2>
+                <button type="button" class="btn btn-primary btn-sm mt-2 mt-sm-0" id="btnNovo">
+                    + Nova Turma
+                </button>
+            </div>
+
+            <div class="card-body">
+
+                <!-- Pesquisa -->
+                <form class="form-inline mb-3" id="formPesquisa" autocomplete="off">
+                    <div class="form-group flex-grow-1 mr-sm-2 mb-2 mb-sm-0">
+                        <label class="sr-only" for="pesquisa">Pesquisar</label>
+                        <input type="text" id="pesquisa" class="form-control w-100"
+                               maxlength="60" placeholder="Pesquisar por nome...">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2 mb-2 mb-sm-0">Filtrar</button>
+                    <button type="button" class="btn btn-secondary mb-2 mb-sm-0" id="btnLimpar">Limpar</button>
+                </form>
+
+                <!-- Tabela -->
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover table-turmas mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Ano Lectivo</th>
+                                <th>Turno</th>
+                                <th>Capacidade</th>
+                                <th>Diretor de Turma</th>
+                                <th>Qualificação</th>
+                                <th class="d-none d-xl-table-cell">Campo</th>
+                                <th class="d-none d-xl-table-cell">Nível</th>
+                                <th class="text-right">Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyTurmas">
+                            <tr>
+                                <td colspan="10" class="text-center text-muted py-4">Nenhuma turma cadastrada no momento.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================== Modal: Novo ===================== -->
+        <div class="modal fade" id="modalNovo" tabindex="-1" role="dialog" aria-labelledby="tituloNovo" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="formNovo">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tituloNovo">Cadastrar Nova Turma</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="novo-campo">Campo / Área</label>
+                                <select id="novo-campo" name="codCampo" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="novo-qualiNivel">Qualificação / Nível <span class="text-danger">*</span></label>
+                                <select id="novo-qualiNivel" name="idQualiNivel" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="novo-diretor">Diretor de Turma <span class="text-danger">*</span></label>
+                                <select id="novo-diretor" name="codDiretor" class="form-control" required></select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label for="novo-turno">Turno <span class="text-danger">*</span></label>
+                                    <select id="novo-turno" name="turno" class="form-control" required></select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="novo-ano">Ano lectivo <span class="text-danger">*</span></label>
+                                    <input type="number" id="novo-ano" name="ano_lectivo" class="form-control"
+                                           min="1000" max="9999" step="1" placeholder="Ex: 2025" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label for="novo-capacidade">Capacidade máxima <span class="text-danger">*</span></label>
+                                    <input type="number" id="novo-capacidade" name="capacidade_maxima" class="form-control"
+                                           min="1" max="200" step="1" placeholder="Ex: 30" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="novo-nome">Nome da turma <span class="text-danger">*</span></label>
+                                    <input type="text" id="novo-nome" name="nome" class="form-control"
+                                           placeholder="Ex: TI-2025-A" maxlength="40" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+                            <button type="submit" class="btn btn-success">Salvar Turma</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== Modal: Editar ===================== -->
+        <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="tituloEditar" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="formEditar">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tituloEditar">Editar Turma</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="edit-codigo">
+                            <div class="form-group">
+                                <label for="edit-campo">Campo / Área</label>
+                                <select id="edit-campo" name="codCampo" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-qualiNivel">Qualificação / Nível <span class="text-danger">*</span></label>
+                                <select id="edit-qualiNivel" name="idQualiNivel" class="form-control" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-diretor">Diretor de Turma <span class="text-danger">*</span></label>
+                                <select id="edit-diretor" name="codDiretor" class="form-control" required></select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label for="edit-turno">Turno <span class="text-danger">*</span></label>
+                                    <select id="edit-turno" name="turno" class="form-control" required></select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="edit-ano">Ano lectivo <span class="text-danger">*</span></label>
+                                    <input type="number" id="edit-ano" name="ano_lectivo" class="form-control"
+                                           min="1000" max="9999" step="1" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-sm-6">
+                                    <label for="edit-capacidade">Capacidade máxima <span class="text-danger">*</span></label>
+                                    <input type="number" id="edit-capacidade" name="capacidade_maxima" class="form-control"
+                                           min="1" max="200" step="1" required>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="edit-nome">Nome da turma <span class="text-danger">*</span></label>
+                                    <input type="text" id="edit-nome" name="nome" class="form-control"
+                                           maxlength="40" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Salvar Alterações</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== Modal: Remover ===================== -->
+        <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="tituloDeletar" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="formDeletar">
+                        <div class="modal-header bg-danger text-white">
+                            <h5 class="modal-title" id="tituloDeletar">Confirmar Exclusão de Registro</h5>
+                            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="del-codigo">
+                            <p>Tem certeza que deseja eliminar permanentemente este registro?</p>
+                            <div class="border rounded p-3 bg-light" id="del-detalhes"></div>
+                            <p class="text-danger small mb-0 mt-3">
+                                Atenção: esta ação não poderá ser desfeita.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Sim, Deletar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== Modal: Detalhes ===================== -->
+        <div class="modal fade" id="modalDetalhes" tabindex="-1" role="dialog" aria-labelledby="tituloDetalhes" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tituloDetalhes">Detalhes da Turma</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="detalhesConteudo"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>

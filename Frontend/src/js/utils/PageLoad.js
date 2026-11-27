@@ -1,23 +1,41 @@
+/**
+ * PageLoad.js — carrega uma página para dentro de um contentor (#app).
+ *
+ * Convenção:
+ *   pages/<nome>/<nome>.html   → marcação da página
+ *   pages/<nome>/<nome>.js     → script da página (opcional)
+ *
+ * Uso:
+ *   import carregarPagina from './js/utils/PageLoad.js';
+ *   carregarPagina('dasboard');
+ */
 
+const ID_SCRIPT_PAGINA = "script-pagina";
 
-function carregarPagina(nome){
-    const base = `pages/${nome}/${nome}`
-    const NotFound = `pages/NotFound/NotFound.html`
-    $('#app').load(`${base}.html`, function(resposta,status){
-        if(status === 'error'){
-            $('#app').load(NotFound)
-            return
+function carregarScriptDaPagina(idScript, caminhoBase) {
+    $(`#${idScript}`).remove();
+
+    const script = $("<script>");
+    script.attr("id", idScript);
+    script.attr("src", `${caminhoBase}.js`);
+    $("body").append(script);
+}
+
+function carregarPagina(nomePagina, seletorDestino = "#app") {
+    const caminhoBase = `pages/${nomePagina}/${nomePagina}`;
+
+    $(seletorDestino).load(`${caminhoBase}.html`, function (_resposta, estado) {
+        if (estado === "error") {
+            $(seletorDestino).html(
+                `<div class="alert alert-warning m-4" role="alert">` +
+                `Página <strong>${nomePagina}</strong> não encontrada.</div>`
+            );
+            return;
         }
-    })
 
-    carregarScript("script-pagina", base)
-}
-function carregarScript(id, src){
-    $(`#${id}`).remove()
-    const script = $('<script>')
-    script.attr("id", id)
-    script.attr("src", `${src}.js`)
-    $('body').append(script)
+        carregarScriptDaPagina(ID_SCRIPT_PAGINA, caminhoBase);
+    });
 }
 
-export default carregarPagina
+export default carregarPagina;
+export { carregarScriptDaPagina };

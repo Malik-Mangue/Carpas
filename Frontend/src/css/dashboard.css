@@ -241,98 +241,119 @@ body {
     color: var(--text-muted);
 }
 
-.section-title {
-    font-size: .74rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #9aa4b8;
-    margin-bottom: .9rem;
-}
-
-/* ---------- Cartões de estatística ---------- */
+/* ---------- Cartões do dashboard (mesmo estilo do sistema original) ---------- */
 
 .stat-card {
-    --accent: #1d4ed8;
-    --accent-soft: #e0e7ff;
-
-    display: block;
-    height: 100%;
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--accent);
-    border-radius: .65rem;
-    background: var(--bg-surface);
-    color: inherit;
+    border-radius: 4px;
+    color: #ffffff;
+    padding: 14px 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 108px;
     text-decoration: none;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
-    transition: transform .15s ease, box-shadow .15s ease;
+    transition: transform .2s ease;
 }
 
 .stat-card:hover,
 .stat-card:focus {
-    color: inherit;
+    color: #ffffff;
     text-decoration: none;
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(15, 23, 42, .10);
 }
 
-.stat-card .card-body {
-    padding: 1.15rem 1.25rem;
+.stat-card.card-cyan   { background-color: #00c0ef; }
+.stat-card.card-green  { background-color: #00a65a; }
+.stat-card.card-orange { background-color: #f39c12; }
+.stat-card.card-red    { background-color: #dd4b39; }
+
+.stat-card-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .stat-number {
-    font-size: 2rem;
+    font-size: 30px;
     font-weight: 700;
     line-height: 1.1;
-    color: var(--text-strong);
 }
 
 .stat-label {
-    font-size: .82rem;
-    color: var(--text-muted);
-    margin-top: .2rem;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 4px;
+    opacity: .95;
 }
 
 .stat-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: .6rem;
-    background: var(--accent-soft);
-    color: var(--accent);
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: .4;
     flex: 0 0 auto;
 }
 
-.stat-card .card-footer {
-    background: transparent;
-    border-top: 1px solid var(--border);
-    padding: .6rem 1.25rem;
-    font-size: .78rem;
-    color: var(--text-muted);
+.stat-icon .icon {
+    width: 30px;
+    height: 30px;
+    stroke-width: 2;
+}
+
+.stat-card-footer {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, .2);
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: .9;
 }
 
-.stat-card:hover .card-footer {
-    color: var(--accent);
+/* ---------- Tabela da listagem de formadores ---------- */
+
+.table-formadores,
+.table-formandos,
+.table-turmas,
+.table-matriculas {
+    font-size: .78rem;
 }
 
-.stat-card .card-footer .icon {
-    transition: transform .15s ease;
+.table-formadores th,
+.table-formadores td,
+.table-formandos th,
+.table-formandos td,
+.table-turmas th,
+.table-turmas td,
+.table-matriculas th,
+.table-matriculas td {
+    padding: .4rem .4rem;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
-.stat-card:hover .card-footer .icon {
-    transform: translateX(3px);
+.table-formadores thead th,
+.table-formandos thead th,
+.table-turmas thead th,
+.table-matriculas thead th {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: #6b7280;
 }
 
-/* Variantes de cor */
-.stat-cyan   { --accent: #0891b2; --accent-soft: #cffafe; }
-.stat-green  { --accent: #059669; --accent-soft: #d1fae5; }
-.stat-orange { --accent: #ea580c; --accent-soft: #ffedd5; }
-.stat-red    { --accent: #dc2626; --accent-soft: #fee2e2; }
+.table-formadores .badge {
+    font-size: .65rem;
+    font-weight: 500;
+    vertical-align: middle;
+}
 
 /* ---------- Footer ---------- */
 
