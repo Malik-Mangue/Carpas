@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Carpas — Log</title>
+  <link rel="stylesheet" href="../../public/libs/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <span class="navbar-brand mb-0 h1">Carpas — Log</span>
+  </nav>
+
+  <main class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="h4 mb-0">Log de Acessos</h2>
+    </div>
+
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2>Log de Acessos</h2>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover mb-0">
+            <thead>
+              <tr>
+                <th>Utilizador</th>
+                <th>Action</th>
+                <th>Timestamp</th>
+                <th>Detalhes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Admin</td>
+                <td>Login</td>
+                <td>2024-01-15 10:30</td>
+                <td>Successful login</td>
+              </tr>
+              <tr>
+                <td>Utilizador</td>
+                <td>Formulário</td>
+                <td>2024-01-15 10:35</td>
+                <td>Submissão de formulário</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-detalhes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-detalhes-titulo" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Detalhes do Registro</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Utilizador:</strong> <span id="log-utilizador"></span></p>
+            <p><strong>Action:</strong> <span id="log-action"></span></p>
+            <p><strong>Timestamp:</strong> <span id="log-timestamp"></span></p>
+            <p><strong>IP:</strong> <span id="log-ip"></span></p>
+            <p><strong>Detalhes:</strong> <span id="log-detalhes"></span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../public/libs/js/bootstrap.bundle.min.js"></script>
+  <script ./log.js"></script>
+</body>
+</html>
