@@ -3,61 +3,291 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Carpas — Dashboard</title>
+  <title>Carpas — Painel Administrativo</title>
+  <!-- Bootstrap 4 Local -->
   <link rel="stylesheet" href="../../public/libs/css/bootstrap.min.css">
+  <!-- Identidade Visual & Variáveis Carpas -->
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
-<body class="bg-light">
-  <div id="header"></div>
+<body>
 
-  <div class="d-flex" style="display: flex;">
-    <div id="sidebar"></div>
+  <div class="d-flex flex-column flex-md-row min-vh-100">
+    
+    <!-- SIDEBAR MODERNA COM AS 4 CORES -->
+    <aside class="sidebar" role="navigation" aria-label="Menu Principal">
+      
+      <!-- Topo: Marca / Projeto -->
+      <div class="sidebar-header">
+        <div class="brand-badge">C</div>
+        <span class="brand-name">Carpas</span>
+        <span class="brand-tag">Gestão</span>
+      </div>
 
+      <nav class="sidebar-nav">
+        <!-- Item "Dashboard" Solto no Topo (Ativo) -->
+        <div class="nav-item-standalone">
+          <a href="./dashboard.html" class="nav-link-custom active" aria-current="page">
+            <img src="./assets/icons/dashboard.svg" alt="" aria-hidden="true">
+            <span>Dashboard</span>
+          </a>
+        </div>
 
-  <main class="container" style="flex: 1;">
-    <div class="row">
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card text-white bg-primary o-1">
-          <div class="card-header">Formadores</div>
-          <div class="card-body">
-            <h5 class="card-title">12</h5>
-            <p class="card-text">Total de formadores</p>
+        <!-- Secção 1: Estrutura Curricular -->
+        <div class="sidebar-section">
+          <div class="section-title">Estrutura Curricular</div>
+          <a href="../modulo/modulo.html" class="nav-link-custom">
+            <img src="./assets/icons/modulo.svg" alt="" aria-hidden="true">
+            <span>Módulo</span>
+          </a>
+          <a href="../qualificacao/qualificacao.html" class="nav-link-custom">
+            <img src="./assets/icons/qualificacao.svg" alt="" aria-hidden="true">
+            <span>Qualificação</span>
+          </a>
+          <a href="../nivel/nivel.html" class="nav-link-custom">
+            <img src="./assets/icons/nivel.svg" alt="" aria-hidden="true">
+            <span>Nível</span>
+          </a>
+          <a href="../Campo/Campo.html" class="nav-link-custom">
+            <img src="./assets/icons/campo.svg" alt="" aria-hidden="true">
+            <span>Campo</span>
+          </a>
+          <a href="../sala/sala.html" class="nav-link-custom">
+            <img src="./assets/icons/sala.svg" alt="" aria-hidden="true">
+            <span>Sala</span>
+          </a>
+        </div>
+
+        <!-- Secção 2: Administração -->
+        <div class="sidebar-section">
+          <div class="section-title">Administração</div>
+          <a href="../usuario/usuario.html" class="nav-link-custom">
+            <img src="./assets/icons/usuario.svg" alt="" aria-hidden="true">
+            <span>Usuário</span>
+          </a>
+          <a href="../log/log.html" class="nav-link-custom">
+            <img src="./assets/icons/logs.svg" alt="" aria-hidden="true">
+            <span>Logs</span>
+          </a>
+          <a href="../perfil/perfil.html" class="nav-link-custom">
+            <img src="./assets/icons/perfis.svg" alt="" aria-hidden="true">
+            <span>Perfis</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Perfil (Canto Inferior da Sidebar) -->
+      <div class="sidebar-footer" id="profile-container">
+        <!-- Menu Flutuante -->
+        <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-label="Opções de perfil">
+          <button type="button" class="dropdown-item-custom" role="menuitem">
+            <img src="./assets/icons/change-profile.svg" alt="" aria-hidden="true">
+            <span>Alterar perfil</span>
+          </button>
+          <button type="button" class="dropdown-item-custom item-danger" role="menuitem">
+            <img src="./assets/icons/sign-out.svg" alt="" aria-hidden="true">
+            <span>Sign out</span>
+          </button>
+        </div>
+
+        <!-- Botão Fixo de Perfil -->
+        <button type="button" class="profile-button" id="profile-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown">
+          <div class="profile-avatar">
+            <img src="./assets/icons/perfil.svg" alt="" aria-hidden="true">
+          </div>
+          <div>
+            <div class="profile-name">Malik Mangue</div>
+            <div class="profile-role">Administrador</div>
+          </div>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- ÁREA PRINCIPAL (BOOTSTRAP SIMPLES & DIRETO) -->
+    <main class="flex-grow-1 p-3 p-md-4 p-xl-5">
+      
+      <!-- Cabeçalho -->
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
+        <div>
+          <h1 class="h3 font-weight-bold mb-1" style="color: var(--color-chinese-black);">Dashboard</h1>
+          <p class="text-muted mb-0">Visão geral da estrutura curricular e utilizadores do sistema Carpas</p>
+        </div>
+        <div class="mt-3 mt-md-0">
+          <span class="badge badge-golden-custom px-3 py-2">Identidade 2026 Ativa</span>
+        </div>
+      </div>
+
+      <!-- 4 CARTÕES DE ESTATÍSTICAS (GRID BOOTSTRAP) -->
+      <div class="row">
+        
+        <!-- Módulos -->
+        <div class="col-12 col-sm-6 col-xl-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm" style="border-top: 3px solid var(--color-primary) !important;">
+            <div class="card-body d-flex flex-column justify-content-between p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted font-weight-bold small text-uppercase">Módulos</span>
+                <div class="p-2 rounded" style="background-color: rgba(54, 112, 255, 0.1);">
+                  <img src="./assets/icons/modulo.svg" alt="" width="20" height="20">
+                </div>
+              </div>
+              <div class="h2 font-weight-bold mb-1" style="color: var(--color-chinese-black);">28</div>
+              <small class="text-muted">+4 adicionados este semestre</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Qualificações -->
+        <div class="col-12 col-sm-6 col-xl-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm" style="border-top: 3px solid var(--color-accent) !important;">
+            <div class="card-body d-flex flex-column justify-content-between p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted font-weight-bold small text-uppercase">Qualificações</span>
+                <div class="p-2 rounded" style="background-color: rgba(249, 214, 1, 0.2);">
+                  <img src="./assets/icons/qualificacao.svg" alt="" width="20" height="20">
+                </div>
+              </div>
+              <div class="h2 font-weight-bold mb-1" style="color: var(--color-chinese-black);">12</div>
+              <small class="text-muted">Homologadas e ativas</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Salas -->
+        <div class="col-12 col-sm-6 col-xl-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm" style="border-top: 3px solid var(--color-primary) !important;">
+            <div class="card-body d-flex flex-column justify-content-between p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted font-weight-bold small text-uppercase">Salas</span>
+                <div class="p-2 rounded" style="background-color: rgba(54, 112, 255, 0.1);">
+                  <img src="./assets/icons/sala.svg" alt="" width="20" height="20">
+                </div>
+              </div>
+              <div class="h2 font-weight-bold mb-1" style="color: var(--color-chinese-black);">16</div>
+              <small class="text-muted">12 em atividade no momento</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Utilizadores -->
+        <div class="col-12 col-sm-6 col-xl-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm" style="border-top: 3px solid var(--color-accent) !important;">
+            <div class="card-body d-flex flex-column justify-content-between p-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-muted font-weight-bold small text-uppercase">Utilizadores</span>
+                <div class="p-2 rounded" style="background-color: rgba(249, 214, 1, 0.2);">
+                  <img src="./assets/icons/usuario.svg" alt="" width="20" height="20">
+                </div>
+              </div>
+              <div class="h2 font-weight-bold mb-1" style="color: var(--color-chinese-black);">148</div>
+              <small class="text-muted">Formadores e coordenadores</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PAINEL GRANDE DE CONTEÚDO (CARD BOOTSTRAP) -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center py-3">
+          <h2 class="h5 font-weight-bold mb-0" style="color: var(--color-chinese-black);">Módulos Curriculares e Atribuição</h2>
+          <button type="button" class="btn btn-primary btn-sm px-3">
+            + Novo Módulo
+          </button>
+        </div>
+
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th class="border-0">Código</th>
+                  <th class="border-0">Nome do Módulo</th>
+                  <th class="border-0">Qualificação Associada</th>
+                  <th class="border-0">Nível</th>
+                  <th class="border-0">Sala Padrão</th>
+                  <th class="border-0">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>MOD-0101</strong></td>
+                  <td>Arquitetura de Sistemas Web</td>
+                  <td>Informática de Gestão</td>
+                  <td>Nível 5</td>
+                  <td>Lab 02 (Informática)</td>
+                  <td><span class="badge badge-primary-custom">Ativo</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MOD-0102</strong></td>
+                  <td>Bases de Dados Relacionais e SQL</td>
+                  <td>Engenharia de Software</td>
+                  <td>Nível 4</td>
+                  <td>Sala 104</td>
+                  <td><span class="badge badge-primary-custom">Ativo</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MOD-0205</strong></td>
+                  <td>Metodologias Ágeis de Projeto</td>
+                  <td>Gestão de Formação</td>
+                  <td>Nível 5</td>
+                  <td>Auditório Principal</td>
+                  <td><span class="badge badge-golden-custom">Em Revisão</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MOD-0309</strong></td>
+                  <td>Segurança da Informação e Redes</td>
+                  <td>Cibersegurança</td>
+                  <td>Nível 6</td>
+                  <td>Lab 01 (Redes)</td>
+                  <td><span class="badge badge-primary-custom">Ativo</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card text-white bg-success o-1">
-          <div class="card-header">Turmas</div>
-          <div class="card-body">
-            <h5 class="card-title">45</h5>
-            <p class="card-text">Total de turmas</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card text-white bg-info o-1">
-          <div class="card-header">Qualificações</div>
-          <div class="card-body">
-            <h5 class="card-title">30</h5>
-            <p class="card-text">Total de qualificações</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 mb-4">
-        <div class="card text-white bg-warning o-1">
-          <div class="card-header">Utilizadores</div>
-          <div class="card-body">
-            <h5 class="card-title">200</h5>
-            <p class="card-text">Total de utilizadores</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+
+    </main>
+
   </div>
-  <div id="footer"></div>
 
+  <!-- BIBLIOTECAS JS LOCAIS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../public/libs/js/bootstrap.bundle.min.js"></script>
-  <script src="./dashboard.js"></script>
+  
+  <!-- INTERATIVIDADE DO PERFIL -->
+  <script>
+    (function() {
+      const trigger = document.getElementById('profile-trigger');
+      const dropdown = document.getElementById('profile-dropdown');
+      const container = document.getElementById('profile-container');
+
+      function toggleMenu(open) {
+        const isOpen = open !== undefined ? open : !dropdown.classList.contains('is-open');
+        dropdown.classList.toggle('is-open', isOpen);
+        trigger.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      if (trigger && dropdown && container) {
+        trigger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          toggleMenu();
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!container.contains(e.target)) {
+            toggleMenu(false);
+          }
+        });
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && dropdown.classList.contains('is-open')) {
+            toggleMenu(false);
+            trigger.focus();
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

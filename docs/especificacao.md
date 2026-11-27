@@ -68,3 +68,32 @@ Carpas/
 - **Bibliotecas locais**: usar os ficheiros locais de Bootstrap em `Frontend/public/libs/`.
 - **Validações no DOM**: validar campos no evento `input`, aplicando `.is-valid` (verde) quando correto e `.is-invalid` + `.invalid-feedback` (vermelho) com a mensagem de erro quando inválido.
 - **Integração com API**: preparar os scripts para receber JSON (convertendo para array de objetos quando necessário) e executar operações CRUD via `$.ajax`, mantendo o código simples e legível.
+
+## 6. Layout e Identidade Visual da Dashboard Administrativa
+
+O layout oficial da dashboard administrativa está estruturado nos ficheiros:
+- `dashboard/index.html` (e espelho em `docs/dashboard/index.html`)
+- `dashboard/styles.css` (e espelho em `docs/dashboard/styles.css`)
+- `dashboard/assets/icons/*.svg` (ícones individuais em formato SVG 24x24 com traço de 1.8px)
+
+### 6.1. Paleta de Cores e Tokens
+- **Fundo Principal**: `#F0E7D6` (Bege Claro / Off-White)
+- **Superfície (Cartões)**: `#FFFFFF`
+- **Fundo da Sidebar**: `#1B1B1B` (Ink Black)
+- **Cor Primária**: `#EA2E00` (Vermelho/Laranja Carpas)
+- **Cor de Destaque**: `#EA2E00`
+- **Texto Principal**: `#1B1B1B` (Ink Black)
+- **Texto Secundário**: `#5A7370` (Sage escurecido para legibilidade)
+- **Perigo (Sign Out)**: `#DC2626`
+
+### 6.2. Estrutura da Barra Lateral (Sidebar)
+- Largura fixa (~260px) com nome do projeto no topo.
+- Item "Dashboard" destacado no topo com barra indicadora lateral na cor primária.
+- Duas secções em blocos translúcidos com efeito de vidro (`backdrop-filter: blur(8px)`, bordas subtis e fundo `rgba(255, 255, 255, 0.04)`):
+  1. **Estrutura Curricular**: Módulo, Qualificação, Nível, Campo, Sala.
+  2. **Administração**: Usuário, Logs, Perfis.
+- Menu de perfil flutuante na base da barra lateral com opções "Alterar perfil" e "Sign out" (em cor de perigo), com controlo de acessibilidade (`aria-haspopup` e `aria-expanded`) e fecho ao clicar fora ou pressionar `Escape`.
+
+### 6.3. Área Principal e Responsividade
+- Cabeçalho informativo, 4 cartões de estatísticas principais e painel de visão geral curricular.
+- Adaptação responsiva para ecrãs menores (`max-width: 768px`) e suporte nativo a `prefers-reduced-motion`.

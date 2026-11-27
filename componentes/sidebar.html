@@ -1,21 +1,84 @@
-<aside class="bg-dark text-white p-3" style="min-width: 220px; min-height: 100vh;">
-  <h5 class="mb-3">Carpas</h5>
-  <ul class="nav flex-column">
-    <li class="nav-item"><a class="nav-link text-white" href="../dashboard/dashboard.html">Dashboard</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../Campo/Campo.html">Campo</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../formadores/formadores.html">Formadores</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../formando/formando.html">Formando</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../inscricao/inscricao.html">Inscrição</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../licao/licao.html">Lição</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../log/log.html">Log</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../matricula/matricula.html">Matrícula</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../modulo/modulo.html">Módulo</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../nivel/nivel.html">Nível</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../perfil/perfil.html">Perfil</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../permissoes/permissoes.html">Permissões</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../qualificacao/qualificacao.html">Qualificação</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../sala/sala.html">Sala</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../turma/turma.html">Turma</a></li>
-    <li class="nav-item"><a class="nav-link text-white" href="../usuario/usuario.html">Usuário</a></li>
-  </ul>
+<aside class="sidebar" role="navigation" aria-label="Menu Principal">
+  <!-- Topo: Marca / Projeto -->
+  <div class="sidebar-header">
+    <div class="brand-badge">C</div>
+    <span class="brand-name">Carpas</span>
+    <span class="brand-tag">Gestão</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <!-- Item Dashboard (Ativo) -->
+    <div class="nav-item-standalone">
+      <a href="../dashboard/dashboard.html" class="nav-link-custom active" aria-current="page">
+        <img src="assets/icons/dashboard.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/dashboard.svg'">
+        <span>Dashboard</span>
+      </a>
+    </div>
+
+    <!-- Secção 1: Estrutura Curricular -->
+    <div class="sidebar-section">
+      <div class="section-title">Estrutura Curricular</div>
+      <a href="../modulo/modulo.html" class="nav-link-custom">
+        <img src="assets/icons/modulo.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/modulo.svg'">
+        <span>Módulo</span>
+      </a>
+      <a href="../qualificacao/qualificacao.html" class="nav-link-custom">
+        <img src="assets/icons/qualificacao.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/qualificacao.svg'">
+        <span>Qualificação</span>
+      </a>
+      <a href="../nivel/nivel.html" class="nav-link-custom">
+        <img src="assets/icons/nivel.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/nivel.svg'">
+        <span>Nível</span>
+      </a>
+      <a href="../Campo/Campo.html" class="nav-link-custom">
+        <img src="assets/icons/campo.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/campo.svg'">
+        <span>Campo</span>
+      </a>
+      <a href="../sala/sala.html" class="nav-link-custom">
+        <img src="assets/icons/sala.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/sala.svg'">
+        <span>Sala</span>
+      </a>
+    </div>
+
+    <!-- Secção 2: Administração -->
+    <div class="sidebar-section">
+      <div class="section-title">Administração</div>
+      <a href="../usuario/usuario.html" class="nav-link-custom">
+        <img src="assets/icons/usuario.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/usuario.svg'">
+        <span>Usuário</span>
+      </a>
+      <a href="../log/log.html" class="nav-link-custom">
+        <img src="assets/icons/logs.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/logs.svg'">
+        <span>Logs</span>
+      </a>
+      <a href="../perfil/perfil.html" class="nav-link-custom">
+        <img src="assets/icons/perfis.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/perfis.svg'">
+        <span>Perfis</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Perfil (Canto Inferior) -->
+  <div class="sidebar-footer" id="profile-container">
+    <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-label="Opções de perfil">
+      <button type="button" class="dropdown-item-custom" role="menuitem">
+        <img src="assets/icons/change-profile.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/change-profile.svg'">
+        <span>Alterar perfil</span>
+      </button>
+      <button type="button" class="dropdown-item-custom item-danger" role="menuitem">
+        <img src="assets/icons/sign-out.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/sign-out.svg'">
+        <span>Sign out</span>
+      </button>
+    </div>
+
+    <button type="button" class="profile-button" id="profile-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown">
+      <div class="profile-avatar">
+        <img src="assets/icons/perfil.svg" alt="" aria-hidden="true" onerror="this.src='../../assets/icons/perfil.svg'">
+      </div>
+      <div>
+        <div class="profile-name">Malik Mangue</div>
+        <div class="profile-role">Administrador</div>
+      </div>
+    </button>
+  </div>
 </aside>
