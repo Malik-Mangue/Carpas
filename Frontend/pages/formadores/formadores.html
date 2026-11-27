@@ -20,25 +20,40 @@
     </div>
 
     <div class="card mb-4">
-      <div class="card-body">
-        <div class="form-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            id="pesquisa-formador"
-            placeholder="Pesquisar por nome, email ou especialidade..."
-          >
+      <div class="card-header">
+        <h2>Listagem de Formadores</h2>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="divider">/</span>
+          <span>Formadores</span>
         </div>
-
+      </div>
+      <div class="card-body">
+        <form method="get" action="formadores.html" class="form-actions">
+          <div class="form-group">
+            <label for="pesquisa">Pesquisar</label>
+            <input type="text" id="pesquisa" name="pesquisa" class="form-control"
+                   maxlength="100" placeholder="Nome, email, género, estado civil ou contacto"
+                   value="">
+          </div>
+          <button type="submit" class="btn btn-primary">Filtrar</button>
+          <a href="formadores.html" class="btn btn-secondary">Limpar</a>
+        </form>
         <div class="table-responsive">
           <table class="table table-striped table-hover mb-0" id="tabela-formadores">
-            <thead class="thead-light">
+            <thead>
               <tr>
+                <th class="col-codigo">Código</th>
                 <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Especialidade</th>
-                <th>Estado</th>
+                <th>Apelido</th>
+                <th>Campo</th>
+                <th>E-mail</th>
+                <th>Género</th>
+                <th>Estado Civil</th>
+                <th>Contacto</th>
+                <th>Valor/Hora</th>
+                <th>Horas/Mês</th>
+                <th>Salário</th>
                 <th class="text-right">Ações</th>
               </tr>
             </thead>
@@ -47,56 +62,279 @@
         </div>
       </div>
     </div>
-  </main>
 
-  <div class="modal fade" id="modal-formador" tabindex="-1" role="dialog" aria-labelledby="modal-formador-titulo" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <form id="form-formador" novalidate>
+    <div id="modal-novo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-novo-titulo" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form method="post" action="#">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-novo-titulo">Cadastrar Novo Formador</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="formador-id-novo">
+              <div class="form-group">
+                <label for="f-nome-novo">Nome <span class="required">*</span></label>
+                <input type="text" id="f-nome-novo" name="nome" class="form-control"
+                       placeholder="Ex: João" maxlength="40" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-apelido-novo">Apelido <span class="required">*</span></label>
+                <input type="text" id="f-apelido-novo" name="apelido" class="form-control"
+                       placeholder="Ex: Silva" maxlength="40" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-email-novo">E-mail <span class="required">*</span></label>
+                <input type="email" id="f-email-novo" name="email" class="form-control"
+                       placeholder="Ex: joao.silva@email.com" maxlength="100" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-genero-novo">Género</label>
+                <select id="f-genero-novo" name="genero" class="form-control" required>
+                  <option value="">-- Selecionar --</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                  <option value="Outro">Outro</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-estadoCivil-novo">Estado Civil</label>
+                <select id="f-estadoCivil-novo" name="estadoCivil" class="form-control">
+                  <option value="">-- Selecionar --</option>
+                  <option value="Solteiro(a)">Solteiro(a)</option>
+                  <option value="Casado(a)">Casado(a)</option>
+                  <option value="União estável">União estável</option>
+                  <option value="Divorciado(a)">Divorciado(a)</option>
+                  <option value="Viúvo(a)">Viúvo(a)</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-contacto-novo">Contacto <span class="required">*</span></label>
+                <input type="number" id="f-contacto-novo" name="contacto" class="form-control"
+                       min="1" placeholder="Ex: 912345678" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-valorHora-novo">Valor por hora <span class="required">*</span></label>
+                <input type="number" id="f-valorHora-novo" name="valorHora" class="form-control"
+                       min="1" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-horasMes-novo">Horas por mês <span class="required">*</span></label>
+                <input type="number" id="f-horasMes-novo" name="horasMes" class="form-control"
+                       min="1" required>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Guardar Formador</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-detalhes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-detalhes-titulo" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modal-formador-titulo">Novo Formador</h5>
+            <h3>Detalhes do Formador</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <input type="hidden" id="formador-id">
-            <div class="form-group">
-              <label for="formador-nome">Nome completo</label>
-              <input type="text" class="form-control" id="formador-nome" required>
-              <div class="invalid-feedback"></div>
+            <h4>Dados Pessoais</h4>
+            <div class="confirm-detail-box">
+              <p><strong>Nome:</strong> <span id="detalhe-nome"></span></p>
+              <p><strong>Campo:</strong> <span id="detalhe-campo"></span></p>
+              <p><strong>E-mail:</strong> <span id="detalhe-email"></span></p>
+              <p><strong>Género:</strong> <span id="detalhe-genero"></span></p>
+              <p><strong>Estado civil:</strong> <span id="detalhe-estadoCivil"></span></p>
+              <p><strong>Contacto:</strong> <span id="detalhe-contacto"></span></p>
+              <p><strong>Valor/Hora:</strong> <span id="detalhe-valorHora"></span></p>
+              <p><strong>Horas/Mês:</strong> <span id="detalhe-horasMes"></span></p>
+              <p><strong>Salário:</strong> <span id="detalhe-salario"></span></p>
+              <p><strong>Funções:</strong> <span id="detalhe-funcoes"></span></p>
             </div>
-            <div class="form-group">
-              <label for="formador-email">Email</label>
-              <input type="email" class="form-control" id="formador-email" required>
-              <div class="invalid-feedback"></div>
+
+            <h4>Turmas que dirige</h4>
+            <div class="table-responsive">
+              <table class="table-custom">
+                <thead>
+                  <tr>
+                    <th>Turma</th>
+                    <th>Qualificação</th>
+                    <th>Ano letivo</th>
+                    <th>Turno</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td colspan="4" class="table-empty">Não dirige nenhuma turma.</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="form-group">
-              <label for="formador-telefone">Telefone</label>
-              <input type="text" class="form-control" id="formador-telefone" required>
-              <div class="invalid-feedback"></div>
-            </div>
-            <div class="form-group">
-              <label for="formador-especialidade">Especialidade</label>
-              <input type="text" class="form-control" id="formador-especialidade" required>
-              <div class="invalid-feedback"></div>
-            </div>
-            <div class="form-group mb-0">
-              <label for="formador-estado">Estado</label>
-              <select class="form-control" id="formador-estado">
-                <option value="Ativo">Ativo</option>
-                <option value="Inativo">Inativo</option>
-              </select>
+
+            <h4>Qualificações que coordena</h4>
+            <div class="table-responsive">
+              <table class="table-custom">
+                <thead>
+                  <tr>
+                    <th>Qualificação</th>
+                    <th>Campo</th>
+                    <th>Nível</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td colspan="3" class="table-empty">Não coordena nenhuma qualificação.</td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary">Fechar</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
+
+    <div id="modal-editar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-editar-titulo" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form method="post" action="#">
+            <div class="modal-header">
+              <h3>Editar Formador</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" id="formador-id-editar">
+              <div class="form-group">
+                <label for="f-nome-editar">Nome <span class="required">*</span></label>
+                <input type="text" id="f-nome-editar" name="nome" class="form-control"
+                       placeholder="Ex: João" maxlength="40" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-apelido-editar">Apelido <span class="required">*</span></label>
+                <input type="text" id="f-apelido-editar" name="apelido" class="form-control"
+                       placeholder="Ex: Silva" maxlength="40" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-email-editar">E-mail <span class="required">*</span></label>
+                <input type="email" id="f-email-editar" name="email" class="form-control"
+                       placeholder="Ex: joao.silva@email.com" maxlength="100" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-genero-editar">Género</label>
+                <select id="f-genero-editar" name="genero" class="form-control" required>
+                  <option value="">-- Selecionar --</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                  <option value="Outro">Outro</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-estadoCivil-editar">Estado Civil</label>
+                <select id="f-estadoCivil-editar" name="estadoCivil" class="form-control">
+                  <option value="">-- Selecionar --</option>
+                  <option value="Solteiro(a)">Solteiro(a)</option>
+                  <option value="Casado(a)">Casado(a)</option>
+                  <option value="União estável">União estável</option>
+                  <option value="Divorciado(a)">Divorciado(a)</option>
+                  <option value="Viúvo(a)">Viúvo(a)</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-contacto-editar">Contacto <span class="required">*</span></label>
+                <input type="number" id="f-contacto-editar" name="contacto" class="form-control"
+                       min="1" placeholder="Ex: 912345678" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-valorHora-editar">Valor por hora <span class="required">*</span></label>
+                <input type="number" id="f-valorHora-editar" name="valorHora" class="form-control"
+                       min="1" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label for="f-horasMes-editar">Horas por mês <span class="required">*</span></label>
+                <input type="number" id="f-horasMes-editar" name="horasMes" class="form-control"
+                       min="1" required>
+                <div class="invalid-feedback"></div>
+              </div>
+              <div class="form-group">
+                <label>Função</label>
+                <div class="form-actions">
+                  <label>
+                    <input type="checkbox" name="isFormador" value="1" checked> Formador
+                  </label>
+                  <label>
+                    <input type="checkbox" name="isDiretor" value="1"> Diretor de Turma
+                  </label>
+                  <label>
+                    <input type="checkbox" name="isCoordenador" value="1"> Coordenador
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary">Cancelar</button>
+              <button type="submit" class="btn btn-success">Salvar Alterações</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-deletar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-deletar-titulo" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header modal-header-danger">
+            <h3>Confirmar Exclusão de Registro</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="post" action="#">
+            <div class="modal-body">
+              <p class="confirm-question">
+                Tem certeza que deseja eliminar permanentemente este registro?
+              </p>
+              <div class="confirm-detail-box">
+                <p><strong>Código:</strong> <span id="del-codigo"></span></p>
+                <p><strong>Nome:</strong> <span id="del-nome"></span></p>
+                <p><strong>Apelido:</strong> <span id="del-apelido"></span></p>
+                <p><strong>Campo:</strong> <span id="del-campo"></span></p>
+                <p><strong>Contacto:</strong> <span id="del-contacto"></span></p>
+              </div>
+              <p class="confirm-warning">
+                Atenção: esta ação não poderá ser desfeita.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary">Cancelar</button>
+              <button type="submit" class="btn btn-delete">Sim, Deletar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../public/libs/js/bootstrap.bundle.min.js"></script>
