@@ -4,120 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Carpas — Painel Administrativo</title>
-  <!-- Bootstrap 4 Local -->
   <link rel="stylesheet" href="../../public/libs/css/bootstrap.min.css">
-  <!-- Identidade Visual & Variáveis Carpas -->
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-
   <div class="d-flex flex-column flex-md-row min-vh-100">
-    
-    <!-- SIDEBAR MODERNA COM AS 4 CORES -->
-    <aside class="sidebar" role="navigation" aria-label="Menu Principal">
-      
-      <!-- Topo: Marca / Projeto -->
-      <div class="sidebar-header">
-        <div class="brand-badge">C</div>
-        <span class="brand-name">Carpas</span>
-        <span class="brand-tag">Gestão</span>
-      </div>
+    <div id="sidebar"></div>
+    <div class="app-column flex-grow-1 d-flex flex-column">
+      <div id="header"></div>
+      <main class="app-main flex-grow-1 p-3 p-md-4 p-xl-5">
 
-      <nav class="sidebar-nav">
-        <!-- Item "Dashboard" Solto no Topo (Ativo) -->
-        <div class="nav-item-standalone">
-          <a href="./dashboard.html" class="nav-link-custom active" aria-current="page">
-            <img src="./assets/icons/dashboard.svg" alt="" aria-hidden="true">
-            <span>Dashboard</span>
-          </a>
-        </div>
-
-        <!-- Secção 1: Estrutura Curricular -->
-        <div class="sidebar-section">
-          <div class="section-title">Estrutura Curricular</div>
-          <a href="../modulo/modulo.html" class="nav-link-custom">
-            <img src="./assets/icons/modulo.svg" alt="" aria-hidden="true">
-            <span>Módulo</span>
-          </a>
-          <a href="../qualificacao/qualificacao.html" class="nav-link-custom">
-            <img src="./assets/icons/qualificacao.svg" alt="" aria-hidden="true">
-            <span>Qualificação</span>
-          </a>
-          <a href="../nivel/nivel.html" class="nav-link-custom">
-            <img src="./assets/icons/nivel.svg" alt="" aria-hidden="true">
-            <span>Nível</span>
-          </a>
-          <a href="../Campo/Campo.html" class="nav-link-custom">
-            <img src="./assets/icons/campo.svg" alt="" aria-hidden="true">
-            <span>Campo</span>
-          </a>
-          <a href="../sala/sala.html" class="nav-link-custom">
-            <img src="./assets/icons/sala.svg" alt="" aria-hidden="true">
-            <span>Sala</span>
-          </a>
-        </div>
-
-        <!-- Secção 2: Administração -->
-        <div class="sidebar-section">
-          <div class="section-title">Administração</div>
-          <a href="../usuario/usuario.html" class="nav-link-custom">
-            <img src="./assets/icons/usuario.svg" alt="" aria-hidden="true">
-            <span>Usuário</span>
-          </a>
-          <a href="../log/log.html" class="nav-link-custom">
-            <img src="./assets/icons/logs.svg" alt="" aria-hidden="true">
-            <span>Logs</span>
-          </a>
-          <a href="../perfil/perfil.html" class="nav-link-custom">
-            <img src="./assets/icons/perfis.svg" alt="" aria-hidden="true">
-            <span>Perfis</span>
-          </a>
-        </div>
-      </nav>
-
-      <!-- Perfil (Canto Inferior da Sidebar) -->
-      <div class="sidebar-footer" id="profile-container">
-        <!-- Menu Flutuante -->
-        <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-label="Opções de perfil">
-          <button type="button" class="dropdown-item-custom" role="menuitem">
-            <img src="./assets/icons/change-profile.svg" alt="" aria-hidden="true">
-            <span>Alterar perfil</span>
-          </button>
-          <button type="button" class="dropdown-item-custom item-danger" role="menuitem">
-            <img src="./assets/icons/sign-out.svg" alt="" aria-hidden="true">
-            <span>Sign out</span>
-          </button>
-        </div>
-
-        <!-- Botão Fixo de Perfil -->
-        <button type="button" class="profile-button" id="profile-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown">
-          <div class="profile-avatar">
-            <img src="./assets/icons/perfil.svg" alt="" aria-hidden="true">
-          </div>
-          <div>
-            <div class="profile-name">Malik Mangue</div>
-            <div class="profile-role">Administrador</div>
-          </div>
-        </button>
-      </div>
-
-    </aside>
-
-    <!-- ÁREA PRINCIPAL (BOOTSTRAP SIMPLES & DIRETO) -->
-    <main class="flex-grow-1 p-3 p-md-4 p-xl-5">
-      
-      <!-- Cabeçalho -->
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4">
-        <div>
-          <h1 class="h3 font-weight-bold mb-1" style="color: var(--color-chinese-black);">Dashboard</h1>
-          <p class="text-muted mb-0">Visão geral da estrutura curricular e utilizadores do sistema Carpas</p>
-        </div>
-        <div class="mt-3 mt-md-0">
-          <span class="badge badge-golden-custom px-3 py-2">Identidade 2026 Ativa</span>
-        </div>
-      </div>
-
-      <!-- 4 CARTÕES DE ESTATÍSTICAS (GRID BOOTSTRAP) -->
+<!-- 4 CARTÕES DE ESTATÍSTICAS (GRID BOOTSTRAP) -->
       <div class="row">
         
         <!-- Módulos -->
@@ -247,47 +144,12 @@
         </div>
       </div>
 
-    </main>
-
+    
+      </main>
+    </div>
   </div>
-
-  <!-- BIBLIOTECAS JS LOCAIS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../../public/libs/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- INTERATIVIDADE DO PERFIL -->
-  <script>
-    (function() {
-      const trigger = document.getElementById('profile-trigger');
-      const dropdown = document.getElementById('profile-dropdown');
-      const container = document.getElementById('profile-container');
-
-      function toggleMenu(open) {
-        const isOpen = open !== undefined ? open : !dropdown.classList.contains('is-open');
-        dropdown.classList.toggle('is-open', isOpen);
-        trigger.setAttribute('aria-expanded', String(isOpen));
-      }
-
-      if (trigger && dropdown && container) {
-        trigger.addEventListener('click', function(e) {
-          e.stopPropagation();
-          toggleMenu();
-        });
-
-        document.addEventListener('click', function(e) {
-          if (!container.contains(e.target)) {
-            toggleMenu(false);
-          }
-        });
-
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && dropdown.classList.contains('is-open')) {
-            toggleMenu(false);
-            trigger.focus();
-          }
-        });
-      }
-    })();
-  </script>
+  <script src="../../js/layout.js"></script>
 </body>
 </html>

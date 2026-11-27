@@ -108,6 +108,34 @@ body {
   border-radius: 50px;
 }
 
+.app-column {
+  min-width: 0;
+  background: var(--bg-main);
+}
+
+.app-header {
+  background: var(--surface-card);
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 20px;
+}
+
+.app-navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-page-title {
+  color: var(--color-chinese-black);
+}
+
+main.app-main .card {
+  border: 0;
+  box-shadow: var(--shadow-card);
+}
+
 /* Cartões */
 .card {
   background-color: var(--surface-card);
