@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  $('#sidebar').load('../../../componentes/sidebar.html');
+  $('#header').load('../../../componentes/header.html');
+  $('#footer').load('../../../componentes/footer.html');
+
   // =========================================================================
   // 1. CONFIGURAÇÃO DA API
   // Coloca aqui o URL base da tua API (ex: 'http://localhost:3000/api/formadores').
