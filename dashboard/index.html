@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carpas — Painel Administrativo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="navigation" aria-label="Menu Principal">
+      
+      <!-- Topo: Nome do Projeto -->
+      <div class="sidebar-header">
+        <div class="brand-badge">C</div>
+        <span class="brand-name">Carpas</span>
+        <span class="brand-tag">Gestão</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        
+        <!-- Item "Dashboard" Solto no Topo (Ativo) -->
+        <div class="nav-item-standalone">
+          <a href="#" class="nav-link active" aria-current="page">
+            <img src="assets/icons/dashboard.svg" alt="" aria-hidden="true">
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <!-- Secção 1: Estrutura Curricular -->
+        <div class="sidebar-section">
+          <div class="section-title">Estrutura Curricular</div>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/modulo.svg" alt="" aria-hidden="true">
+            <span>Módulo</span>
+          </a>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/qualificacao.svg" alt="" aria-hidden="true">
+            <span>Qualificação</span>
+          </a>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/nivel.svg" alt="" aria-hidden="true">
+            <span>Nível</span>
+          </a>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/campo.svg" alt="" aria-hidden="true">
+            <span>Campo</span>
+          </a>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/sala.svg" alt="" aria-hidden="true">
+            <span>Sala</span>
+          </a>
+        </div>
+
+        <!-- Secção 2: Administração -->
+        <div class="sidebar-section">
+          <div class="section-title">Administração</div>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/usuario.svg" alt="" aria-hidden="true">
+            <span>Usuário</span>
+          </a>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/logs.svg" alt="" aria-hidden="true">
+            <span>Logs</span>
+          </a>
+          <a href="#" class="nav-link">
+            <img src="assets/icons/perfis.svg" alt="" aria-hidden="true">
+            <span>Perfis</span>
+          </a>
+        </div>
+
+      </nav>
+
+      <!-- Perfil (Canto Inferior da Sidebar) -->
+      <div class="sidebar-footer" id="profile-container">
+        
+        <!-- Menu Flutuante -->
+        <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-label="Opções de perfil">
+          <button type="button" class="dropdown-item" role="menuitem">
+            <img src="assets/icons/change-profile.svg" alt="" aria-hidden="true">
+            <span>Alterar perfil</span>
+          </button>
+          <button type="button" class="dropdown-item item-danger" role="menuitem">
+            <img src="assets/icons/sign-out.svg" alt="" aria-hidden="true">
+            <span>Sign out</span>
+          </button>
+        </div>
+
+        <!-- Botão Fixo de Perfil -->
+        <button type="button" class="profile-button" id="profile-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown">
+          <div class="profile-avatar">
+            <img src="assets/icons/perfil.svg" alt="" aria-hidden="true">
+          </div>
+          <div class="profile-details">
+            <span class="profile-name">Malik Mangue</span>
+            <span class="profile-role">Administrador</span>
+          </div>
+        </button>
+
+      </div>
+
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-content">
+      
+      <!-- Cabeçalho -->
+      <header class="page-header">
+        <h1 class="page-title">Dashboard</h1>
+        <p class="page-subtitle">Visão geral da estrutura curricular, infraestruturas e utilizadores do sistema Carpas</p>
+      </header>
+
+      <!-- 4 Cartões de Estatísticas -->
+      <section class="stats-grid" aria-label="Estatísticas principais">
+        
+        <article class="stat-card accent-primary">
+          <div class="stat-header">
+            <span class="stat-label">Módulos</span>
+            <div class="stat-icon-wrap">
+              <img src="assets/icons/modulo.svg" alt="" aria-hidden="true">
+            </div>
+          </div>
+          <div class="stat-value">28</div>
+          <div class="stat-description">+4 adicionados este semestre</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Qualificações</span>
+            <div class="stat-icon-wrap">
+              <img src="assets/icons/qualificacao.svg" alt="" aria-hidden="true">
+            </div>
+          </div>
+          <div class="stat-value">12</div>
+          <div class="stat-description">Homologadas e ativas</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Salas</span>
+            <div class="stat-icon-wrap">
+              <img src="assets/icons/sala.svg" alt="" aria-hidden="true">
+            </div>
+          </div>
+          <div class="stat-value">16</div>
+          <div class="stat-description">12 ocupadas no período atual</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Utilizadores</span>
+            <div class="stat-icon-wrap">
+              <img src="assets/icons/usuario.svg" alt="" aria-hidden="true">
+            </div>
+          </div>
+          <div class="stat-value">148</div>
+          <div class="stat-description">Formadores e coordenadores</div>
+        </article>
+
+      </section>
+
+      <!-- Painel Grande de Conteúdo -->
+      <section class="content-panel" aria-label="Painel de atividade curricular">
+        <div class="panel-header">
+          <h2 class="panel-title">Módulos Curriculares e Atribuição</h2>
+          <button type="button" class="panel-action-btn">
+            + Novo Módulo
+          </button>
+        </div>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nome do Módulo</th>
+                <th>Qualificação Associada</th>
+                <th>Nível</th>
+                <th>Sala Padrão</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>MOD-0101</strong></td>
+                <td>Arquitetura de Sistemas Web</td>
+                <td>Informática de Gestão</td>
+                <td>Nível 5</td>
+                <td>Lab 02 (Informática)</td>
+                <td><span class="badge badge-active">Ativo</span></td>
+              </tr>
+              <tr>
+                <td><strong>MOD-0102</strong></td>
+                <td>Bases de Dados Relacionais e SQL</td>
+                <td>Engenharia de Software</td>
+                <td>Nível 4</td>
+                <td>Sala 104</td>
+                <td><span class="badge badge-active">Ativo</span></td>
+              </tr>
+              <tr>
+                <td><strong>MOD-0205</strong></td>
+                <td>Metodologias Ágeis de Projeto</td>
+                <td>Gestão de Formação</td>
+                <td>Nível 5</td>
+                <td>Auditório Principal</td>
+                <td><span class="badge badge-progress">Em Revisão</span></td>
+              </tr>
+              <tr>
+                <td><strong>MOD-0309</strong></td>
+                <td>Segurança da Informação e Redes</td>
+                <td>Cibersegurança</td>
+                <td>Nível 6</td>
+                <td>Lab 01 (Redes)</td>
+                <td><span class="badge badge-active">Ativo</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- SCRIPT PARA INTERAÇÃO DO PERFIL -->
+  <script>
+    (function() {
+      const trigger = document.getElementById('profile-trigger');
+      const dropdown = document.getElementById('profile-dropdown');
+      const container = document.getElementById('profile-container');
+
+      function toggleMenu(open) {
+        const isOpen = open !== undefined ? open : !dropdown.classList.contains('is-open');
+        dropdown.classList.toggle('is-open', isOpen);
+        trigger.setAttribute('aria-expanded', String(isOpen));
+      }
+
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      // Fechar ao clicar fora
+      document.addEventListener('click', function(e) {
+        if (!container.contains(e.target)) {
+          toggleMenu(false);
+        }
+      });
+
+      // Fechar com tecla Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && dropdown.classList.contains('is-open')) {
+          toggleMenu(false);
+          trigger.focus();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
