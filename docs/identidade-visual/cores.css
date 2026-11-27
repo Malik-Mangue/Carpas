@@ -1,0 +1,15 @@
+/* 4 Cores Oficiais da Identidade Visual Carpas */
+:root {
+  --color-golden: #F9D601;
+  --color-ultramarine: #3670FF;
+  --color-bright-gray: #EFEFEF;
+  --color-chinese-black: #171717;
+
+  /* Mapeamento Semântico */
+  --bg-main: var(--color-bright-gray);
+  --surface-card: #FFFFFF;
+  --sidebar-bg: var(--color-chinese-black);
+  --color-primary: var(--color-ultramarine);
+  --color-accent: var(--color-golden);
+  --color-text: var(--color-chinese-black);
+}

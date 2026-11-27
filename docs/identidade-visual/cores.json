@@ -1,0 +1,30 @@
+{
+  "nome": "Carpas - Identidade Visual",
+  "versao": "2.0.0",
+  "paleta": {
+    "golden": {
+      "nome": "Golden",
+      "hex": "#F9D601",
+      "rgb": "rgb(249, 214, 1)",
+      "funcao": "Acentos, badges e destaques"
+    },
+    "ultramarine_blue": {
+      "nome": "Ultramarine Blue",
+      "hex": "#3670FF",
+      "rgb": "rgb(54, 112, 255)",
+      "funcao": "Cor primária, botões CTA e seleções ativas"
+    },
+    "bright_gray": {
+      "nome": "Bright Gray",
+      "hex": "#EFEFEF",
+      "rgb": "rgb(239, 239, 239)",
+      "funcao": "Fundo principal de páginas"
+    },
+    "chinese_black": {
+      "nome": "Chinese Black",
+      "hex": "#171717",
+      "rgb": "rgb(23, 23, 23)",
+      "funcao": "Sidebar, textos e alto contraste"
+    }
+  }
+}
